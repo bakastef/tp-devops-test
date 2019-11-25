@@ -2,17 +2,12 @@
   {
     "name": "app-testing",
     "image": "303981612052.dkr.ecr.us-west-2.amazonaws.com/tp-devopstest-image:latest",
-    "cpu": ${var.aws-ecs-fargate-task-cpu},
-    "memory": ${var.aws-ecs-fargate-task-memory},
-    "memoryReservation": ${var.aws-ecs-fargate-task-memory-reservation},
+    "cpu": 512,
+    "memory": 1024,
+    "memoryReservation": 128,
     "essential": true,
     "networkMode": "awsvpc",
-    "environment": [
-      {
-        "name": "RANDOM_ENV_VARIABLE",
-        "value": "xxxYYYzzz"
-      }
-    ],
+    "environment": [],
     "portMappings": [
       {
         "containerPort": 5000,
