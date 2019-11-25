@@ -1,32 +1,30 @@
-[
-  {
-    "name": "app-testing",
-    "image": "303981612052.dkr.ecr.us-west-2.amazonaws.com/tp-devopstest-image:latest",
-    "cpu": 512,
-    "memory": 1024,
-    "memoryReservation": 128,
-    "essential": true,
-    "networkMode": "awsvpc",
-    "environment": [],
-    "portMappings": [
-      {
-        "containerPort": 5000,
-        "hostPort": 5000
-      }
-    ],
-    "healthCheck": {
-        "command": [ "CMD-SHELL", "curl -f http://localhost:5000/ || exit 1" ],
-        "startPeriod": 10,
-        "retries": 3,
-        "timeout": 5
-    },
-    "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-            "awslogs-group": "${aws_cloudwatch_log_group.logs-grp-fargate.name}",
-            "awslogs-region": "eu-west-1",
-            "awslogs-stream-prefix": "${aws_cloudwatch_log_stream.logs-stream-testing.name}"
-        }
+{
+  "name": "app-testing",
+  "image": "303981612052.dkr.ecr.us-west-2.amazonaws.com/tp-devopstest-image:latest",
+  "cpu": 512,
+  "memory": 1024,
+  "memoryReservation": 128,
+  "essential": true,
+  "networkMode": "awsvpc",
+  "environment": [],
+  "portMappings": [
+    {
+      "containerPort": 5000,
+      "hostPort": 5000
     }
+  ],
+  "healthCheck": {
+      "command": [ "CMD-SHELL", "curl -f http://localhost:5000/ || exit 1" ],
+      "startPeriod": 10,
+      "retries": 3,
+      "timeout": 5
+  },
+  "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+          "awslogs-group": "${aws_cloudwatch_log_group.logs-grp-fargate.name}",
+          "awslogs-region": "eu-west-1",
+          "awslogs-stream-prefix": "${aws_cloudwatch_log_stream.logs-stream-testing.name}"
+      }
   }
-]
+}
